@@ -26,22 +26,22 @@ const addItem = () => {
         toast('Item added!', 'rgb(9, 80, 9)', '#fff')
         userInput.value = ''
         showItem()
-        console.log(allItems);
+        // console.log(allItems);
     }
 }
 
-const deleteItem = (index) => {
+const deleteItem = (param) => {
     // console.log(index);
     const confamu = confirm('Are you sure you want to delete?')
-    console.log(confamu);
+    // console.log(confamu);
     if (confamu) {
         const prompting = prompt("Type the word 'DELETE' to confirm you are responsible for this")
-        console.log(prompting);
+        // console.log(prompting);
         if (prompting === 'DELETE') {
-            allItems.splice(index, 1)
+            allItems.splice(param, 1)
             const stringified = JSON.stringify(allItems)
             localStorage.setItem('items', stringified)
-            console.log(allItems);
+            // console.log(allItems);
             showItem()
         } else {
             alert('Type in the correct information')
