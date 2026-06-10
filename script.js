@@ -4,18 +4,26 @@
 
 // console.log(allPhones[1]);
 
-const allItems = []
+const allItems = JSON.parse(localStorage.getItem('items')) || []
+
+const showAll = () => {
+    showItem()
+}
 
 const addItem = () => {
     const userInput = document.getElementById('item')
     if (userInput.value.trim() === '') {
         // alert('empty')
-        message.innerHTML = `<div class="alert alert-danger p-2 fw-bold text-center" role="alert">Please fill in the empty input!</div>`
-        setTimeout(() => {
-            message.style.display = 'none'
-        }, 1500);
+        // message.innerHTML = `<div class="alert alert-danger p-2 fw-bold text-center" role="alert">Please fill in the empty input!</div>`
+        // setTimeout(() => {
+        //     message.style.display = 'none'
+        // }, 1500);
+        toast('Empty input!', '#000', '#f00')
     } else {
         allItems.push(userInput.value)
+        const stringified = JSON.stringify(allItems)
+        localStorage.setItem('items', stringified)
+        toast('Item added!', 'rgb(9, 80, 9)', '#fff')
         userInput.value = ''
         showItem()
         console.log(allItems);
@@ -26,11 +34,13 @@ const deleteItem = (index) => {
     // console.log(index);
     const confamu = confirm('Are you sure you want to delete?')
     console.log(confamu);
-    if(confamu) {
+    if (confamu) {
         const prompting = prompt("Type the word 'DELETE' to confirm you are responsible for this")
         console.log(prompting);
-        if(prompting === 'DELETE') {
+        if (prompting === 'DELETE') {
             allItems.splice(index, 1)
+            const stringified = JSON.stringify(allItems)
+            localStorage.setItem('items', stringified)
             console.log(allItems);
             showItem()
         } else {
@@ -54,6 +64,25 @@ function showItem() {
             </div>
         `
     }
+}
+
+function toast(info, background, color) {
+    Toastify({
+        text: info,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: background,
+            color: color,
+            fontSize: '1rem'
+        },
+        onClick: function () { } // Callback after click
+    }).showToast();
 }
 
 // for(let i=0; i<3; i++) {

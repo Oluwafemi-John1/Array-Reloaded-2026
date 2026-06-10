@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Array</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
-<body class="bg-secondary">
+<body class="bg-secondary" onload="showAll()">
     <div class="container-fluid col-lg-6 col-md-8 col-10 shadow rounded-3 mt-lg-5 mt-md-4 mt-3 p-lg-4 p-2">
         <h1 class="text-center">My Shop</h1>
-        <div id="message"></div>
+        <!-- <div id="message"></div> -->
         <input type="text" class="form-control shadow-none p-lg-2 p-1 my-lg-4 my-3" id="item">
         <button class="btn btn-dark w-100 my-2" onclick="addItem()">Add</button>
         <div id="show" class="my-3 text-center">Items added will show here</div>
