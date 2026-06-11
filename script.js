@@ -51,6 +51,19 @@ const deleteItem = (param) => {
     }
 }
 
+const getIndex = (param) => {
+    console.log(param);
+}
+
+const saveEdit = () => {
+    const editInput = document.getElementById('editItem')
+    if (editInput.value.trim() === '') {
+        toast('Empty input!', '#000', '#f00')
+    } else {
+        console.log(editInput.value);
+    }
+}
+
 function showItem() {
     show.innerHTML = ''
     for (let i = 0; i < allItems.length; i++) {
@@ -59,7 +72,7 @@ function showItem() {
                 <p class='text-start'>${i + 1}. ${allItems[i]}</p>
                 <div class="d-flex gap-2">
                     <button class="btn btn-sm btn-danger" onclick="deleteItem(${i})">Delete</button>
-                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getIndex(${i})">Edit</button>
                 </div>
             </div>
         `
