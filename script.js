@@ -59,7 +59,7 @@ function showItem() {
                 <p class='text-start'>${i + 1}. ${allItems[i]}</p>
                 <div class="d-flex gap-2">
                     <button class="btn btn-sm btn-danger" onclick="deleteItem(${i})">Delete</button>
-                    <button class="btn btn-sm btn-warning">Edit</button>
+                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
                 </div>
             </div>
         `
