@@ -10,6 +10,8 @@ const showAll = () => {
     showItem()
 }
 
+let gottenIndex;
+
 const addItem = () => {
     const userInput = document.getElementById('item')
     if (userInput.value.trim() === '') {
@@ -52,15 +54,23 @@ const deleteItem = (param) => {
 }
 
 const getIndex = (param) => {
-    console.log(param);
+    gottenIndex = param
+    const editInput = document.getElementById('editItem')
+    editInput.value = allItems[gottenIndex]
 }
 
 const saveEdit = () => {
+    // console.log(gottenIndex);
     const editInput = document.getElementById('editItem')
+
     if (editInput.value.trim() === '') {
         toast('Empty input!', '#000', '#f00')
     } else {
-        console.log(editInput.value);
+        // console.log(editInput.value);
+        allItems.splice(gottenIndex, 1, editInput.value)
+        localStorage.setItem('items', JSON.stringify(allItems))
+        toast('Edited successfully!', 'rgb(7, 64, 22)', '#f1d46c')
+        showItem()
     }
 }
 
